@@ -1,0 +1,67 @@
+<apex:page id="loginPage" showHeader="false" title="WELCOM to Star Bus Company Bus Station">
+<apex:form >
+  <apex:pageBlock title="WELCOM to Star Bus Company Bus Station">
+          
+   <center>
+   <p><b>Have a nice day!</b></p>
+                 
+                   <br/>
+                   <br/>
+      </center>
+
+   </apex:pageBlock>
+   </apex:form>
+ <!--<apex:composition template="{!$Site.Template}"> !-->
+    <apex:define name="body">  
+      <center>
+        <apex:panelGrid bgcolor="white" columns="1"> 
+          <br/>
+          <br/>
+          <apex:panelGrid width="758" cellpadding="0" cellspacing="0" bgcolor="white" columns="1" styleClass="topPanelContainer"> 
+            <br/>
+            <apex:outputPanel layout="block" styleClass="topPanel">
+              <apex:panelGrid width="758" cellpadding="0" cellspacing="0" bgcolor="white" columns="2"> 
+                <apex:image url="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+                <apex:panelGroup >
+                  <br/>
+                  <apex:outputText styleClass="title" value="{!$Label.site.login}"/>
+                  <br/>
+                  <c:SiteLogin id="siteLogin"/>
+                  <br/>
+                  
+                  
+                </apex:panelGroup>
+              </apex:panelGrid> 
+             </apex:outputPanel>
+       <!--     <c:SitePoweredBy /> !-->
+          </apex:panelGrid> 
+       </apex:panelGrid>
+      </center>
+      <br/>
+    </apex:define>
+  <!-- </apex:composition>!-->
+  <apex:form >
+  <apex:pageBlock >
+          
+   <center>
+   <p>Don`t have an account?</p>
+                   <apex:commandButton action="{!newPassanger}" value="Sign Up" id="signUp"  immediate="true"/>
+                   <br/>
+                   <br/>
+      </center>
+
+   </apex:pageBlock>
+   <apex:pageBlock >
+          
+   <center>
+ 
+                   <br/>
+    <apex:commandButton action="{!loginAdmin}" value="Log In as Admin" id="loginAdmin"/>
+  
+   </center>
+
+   </apex:pageBlock>
+  
+    </apex:form>
+     
+</apex:page>
