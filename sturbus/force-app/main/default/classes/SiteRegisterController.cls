@@ -4,7 +4,7 @@
 public with sharing class SiteRegisterController {
     // PORTAL_ACCOUNT_ID is the account on which the contact will be created on and then enabled as a portal user.
     // you need to add the account owner into the role hierarchy before this will work - please see Customer Portal Setup help for more information.       
-    private static Id PORTAL_ACCOUNT_ID = '001x000xxx35tPN';
+    private static Id PORTAL_ACCOUNT_ID = '0012v00002pM8aZAAS';
     
     public SiteRegisterController () {
     }
@@ -31,6 +31,7 @@ public with sharing class SiteRegisterController {
         User u = new User();
         u.Username = username;
         u.Email = email;
+        u.CommunityNickname = firstName + lastName;
         u.LastName = LastName;
         
         String accountId = PORTAL_ACCOUNT_ID;
@@ -38,7 +39,7 @@ public with sharing class SiteRegisterController {
         // lastName is a required field on user, but if it isn't specified, we'll default it to the username
         String userId = Site.createPortalUser(u, accountId, password);
         if (userId != null) { 
-            if (password != null && password.length() > 1) {
+            if (password != null && password.length() > 5) {
                 return Site.login(username, password, null);
             }
             else {

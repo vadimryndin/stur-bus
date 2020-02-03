@@ -14,14 +14,14 @@
                   <br/>
                   <apex:outputText styleClass="title" value="{!$Label.site.user_registration}"/>
                   <br/>
-                  <apex:form id="theForm" forceSSL="true">
+                  <apex:form id="theForm" >
                     <apex:pageMessages id="error"/>
                     <apex:panelGrid columns="2" style="margin-top:1em;">
                       <apex:outputLabel value="{!$Label.site.username}" for="username"/>
                       <apex:inputText required="true" id="username" value="{!username}"/>
-                      <apex:outputLabel value="{!$User.FirstName}" for="FirstName"/>
+                      <apex:outputLabel value="FirstName" for="FirstName"></apex:outputLabel>
                       <apex:inputText required="true" id="FirstName" value="{!FirstName}"/>
-                      <apex:outputLabel value="{!$User.LastName}" for="LastName"/>
+                      <apex:outputLabel value="LastName" for="LastName"></apex:outputLabel>
                       <apex:inputText required="true" id="LastName" value="{!LastName}"/>
                       <apex:outputLabel value="{!$Label.site.email}" for="email"/>
                       <apex:inputText required="true" id="email" value="{!email}"/>

@@ -1,0 +1,42 @@
+<apex:page id="HomePageUser" showHeader="false" title="Welcom to Star Bus Company Bus Station!" standardController="Bus__c" tabStyle="Bus__c" recordSetVar="Buses">
+<!-- Begin Default Content REMOVE THIS -->
+
+<!--<apex:form >
+    <apex:pageBlock title="Star Bus Company Bus Station"></apex:pageBlock>
+    <apex:image url="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+   <h1>Dear {!$User.FirstName} {!$User.LastName}!</h1> 
+<p>WELCOM to Star Bus Company Bus Station!</p> 
+</apex:form> !-->
+
+<apex:panelGrid columns="2" id="theGrid">
+    <apex:image url="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+     <p><b>WELCOM to Star Bus Company Bus Station!</b>  </p>
+</apex:panelGrid>
+
+<apex:pageBlock title="Hello {!$User.FirstName} {!$User.LastName}!">
+                    You are viewing available buses.
+           </apex:pageBlock>
+    
+<apex:pageBlock>
+            <apex:pageBlockTable value="{!Buses}" var="bus">
+             <apex:column headerValue="Buses" value="{!bus.Name}"/>
+             <apex:column headerValue="Departure" value="{!bus.from__c}"/>
+             <apex:column headerValue="Arrival" value="{!bus.to__c}"/>
+             <apex:column headerValue="Number of seats" value="{!bus.seats__c}"/>
+             <apex:column headerValue="Quality of seats" value="{!bus.quality__c}"/>
+             <apex:column headerValue="In voyage now" value="{!bus.in_Voyage__c}"/>
+            </apex:pageBlockTable>
+</apex:pageBlock>
+
+<apex:panelGroup id="theLinks">
+          <apex:outputLink value="{!$Page.BuyTicket}">To buy a ticket</apex:outputLink>
+</apex:panelGroup>
+
+
+<apex:form>
+       
+       <apex:commandButton value="Go" action="{!list}"/>
+   </apex:form>
+    
+<!-- End Default Content REMOVE THIS -->
+</apex:page>
