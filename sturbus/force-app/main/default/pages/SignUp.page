@@ -19,18 +19,25 @@
                     <apex:panelGrid columns="2" style="margin-top:1em;">
                       <apex:outputLabel value="{!$Label.site.username}" for="username"/>
                       <apex:inputText required="true" id="username" value="{!username}"/>
-                      <apex:outputLabel value="FirstName" for="FirstName"></apex:outputLabel>
+                      <apex:outputLabel value="First Name" for="FirstName"></apex:outputLabel>
                       <apex:inputText required="true" id="FirstName" value="{!FirstName}"/>
-                      <apex:outputLabel value="LastName" for="LastName"></apex:outputLabel>
-                      <apex:inputText required="true" id="LastName" value="{!LastName}"/>
+                      <apex:outputLabel value="Last Name" for="LastName"></apex:outputLabel>
+                      <apex:inputText required="true" id="LastName" value="{!communityNickname}"/>
                       <apex:outputLabel value="{!$Label.site.email}" for="email"/>
                       <apex:inputText required="true" id="email" value="{!email}"/>
+                      <apex:outputLabel value="Phone" for="Phone"></apex:outputLabel>
+                      <apex:inputText required="true" id="Phone" value="{!Phone}"/>
                       <apex:outputLabel value="{!$Label.site.password}" for="password"/>
                       <apex:inputSecret id="password" value="{!password}"/>
                       <apex:outputLabel value="{!$Label.site.confirm_password}" for="confirmPassword"/>
                       <apex:inputSecret id="confirmPassword" value="{!confirmPassword}"/>
-                      <apex:outputText value=""/>
+                     <!-- <apex:outputText value=""/> !-->
+
                       <apex:commandButton action="{!registerUser}" value="{!$Label.site.submit}" id="submit"/>
+                      <apex:commandButton action="{!back}" value="Back to Log In" id="back"/> 
+                      
+                  <apex:outputLink value="{!$Page.login}">Back to Login page</apex:outputLink>
+                  
                     </apex:panelGrid> 
                     </apex:form>                  
                   <br/>

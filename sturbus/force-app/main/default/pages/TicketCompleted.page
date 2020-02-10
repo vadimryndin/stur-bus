@@ -1,0 +1,63 @@
+<apex:page id="ticketCompleted" showHeader="false" title="Select your ticket!" standardController="New_Ticket__c" extensions="buttonController"  >
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!$User.FirstName} {!$User.Last_Name__c} thanks! Have a good trip!</div>
+              </div>
+          </body>
+      </span>
+    </div>
+  </div>
+<!-- Head -->
+
+<!-- New Ticket -->
+<apex:form>
+<apex:pageBlock >
+    <!--apex:outputLink value="{!$Page.PassengerProfile}">{!$User.FirstName} {!$User.Last_Name__c} profile</apex:outputLink !-->
+</apex:pageBlock>
+</apex:form>
+<!-- New Ticket -->
+
+<apex:form >
+<apex:pageBlock title="Ticket Detail">
+<apex:pageBlockbuttons >
+  <apex:commandButton value="Buy a new ticket" action="{!buyticket}"/>
+  <apex:commandButton value="{!$User.FirstName} {!$User.Last_Name__c} profile" Action="{!goProfile}"/>
+</apex:pageBlockbuttons>
+<apex:pageBlockSection title="{!$User.FirstName} {!$User.Last_Name__c} Ticket" columns="2" collapsible="false">
+  <apex:outputField value="{!New_Ticket__c.Name}"/>
+  <apex:outputField value="{!New_Ticket__c.Bus__c}"/>
+  <apex:outputField value="{!New_Ticket__c.from_City__c}"/>
+  <apex:outputField value="{!New_Ticket__c.Seat_number__c}"/>
+  <apex:outputField value="{!New_Ticket__c.to_City__c}"/>
+  <apex:outputField value="{!New_Ticket__c.Ticket_Price__c}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection>
+  <span>
+    <center>
+      <img src="https://previews.123rf.com/images/argus456/argus4561210/argus456121000044/15612752-admit-ticket-on-a-solid-white-background.jpg" width="220" height="220" alt="ticket logo"/>
+    </center>
+  </span>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+<!-- Button "Return to Home Page" -->
+  <apex:form>
+    <apex:pageBlock >
+            <center>
+              <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return"  immediate="true"/>
+            </center>
+         </apex:pageBlock>
+  </apex:form>
+ <!-- Button "Return to Home Page" -->
+</apex:page>

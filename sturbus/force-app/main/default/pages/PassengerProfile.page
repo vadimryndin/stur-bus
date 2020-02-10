@@ -1,0 +1,65 @@
+<apex:page id="psgProfile" showHeader="false" title="Select your ticket!" standardController="Passenger__c" extensions="TheController"  >
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!$User.FirstName} {!$User.Last_Name__c} nice to meet you!</div>
+              </div>
+          </body>
+      </span>
+    </div>
+  </div>
+<!-- Head -->
+
+<!-- New Ticket -->
+<apex:form>
+<apex:pageBlock >
+  <apex:commandButton value="Buy a new ticket" action="{!buyticket}"/>
+</apex:pageBlock>
+</apex:form>
+<!-- New Ticket -->
+
+<apex:form >
+    <apex:pageBlock title="Passenger info">
+      <apex:pageBlockSection title="{!Passenger__c.Name}" columns="2" collapsible="false">
+        <apex:outputField value="{!Passenger__c.Name}"/> 
+        <apex:outputField value="{!Passenger__c.Email__c}"/>
+        <apex:outputField value="{!Passenger__c.First_Name__c}"/>
+        <apex:outputField value="{!Passenger__c.Passanger_phone__c}"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+
+
+  <apex:relatedList list="New_Tickets__r" pageSize="20">
+    <apex:facet name="header">My Tickets List</apex:facet>
+  </apex:relatedList>
+
+<!-- Button "New Tickets" -->
+<apex:form>
+    <apex:pageBlock >
+      <center>
+        <apex:commandButton value="Buy a new ticket" action="{!buyticket}"/>
+    </center>
+    </apex:pageBlock>
+    </apex:form>
+<!-- Button "New Tickets" -->
+
+<!-- Button "Return to Home Page" -->
+  <apex:form>
+    <apex:pageBlock >
+      <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return"  immediate="true"/>
+    </apex:pageBlock>
+  </apex:form>
+  <!-- Button "Return to Home Page" -->
+  
+</apex:page>

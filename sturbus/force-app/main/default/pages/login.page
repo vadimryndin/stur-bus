@@ -1,4 +1,4 @@
-<apex:page id="login" showHeader="false" title="WELCOM to Star Bus Company Bus Station" controller="SignUpController" >
+<apex:page id="login" showHeader="false" title="Star Bus Company Bus Station" controller="SignUpController" >
 <apex:form >
   <apex:pageBlock title="WELCOM to Star Bus Company Bus Station">
           

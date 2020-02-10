@@ -1,4 +1,4 @@
-<apex:page id="BuyTicket" showHeader="false" title="Select your ticket!" standardController="New_Ticket__c" extensions="TheController"  >
+<apex:page id="BuyTicket" showHeader="false" title="Select your ticket!" standardController="New_Ticket__c" extensions="buttonController"  >
 
 <apex:slds />
 <!-- Head -->
@@ -12,7 +12,7 @@
       <span>
         <body class="slds-scope">
             <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
-                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">Select direction and buy your lucky ticket!</div>
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!$User.FirstName} {!$User.Last_Name__c} Select direction and buy your lucky ticket!</div>
               </div>
           </body>
       </span>
@@ -22,23 +22,24 @@
 
 <!-- New Ticket -->
 <apex:form>
-<apex:pageBlock >
-<apex:outputLink value="{!URLFOR($Action.New_Ticket__c.New)}">Create New Ticket</apex:outputLink>
-</apex:pageBlock>
+  <apex:pageBlock>
+    <apex:commandButton value="{!$User.FirstName} {!$User.Last_Name__c} profile" action="{!goProfile}"/>
+  </apex:pageBlock>
 </apex:form>
 <!-- New Ticket -->
 
 <apex:form >
-<apex:pageBlock title="Ticket Detail">
+<apex:pageBlock title="Ticket Details">
 <apex:pageBlockbuttons >
-<apex:commandButton value="Save" action="{!save}"/>
+  <apex:commandButton value="Buy / Save" action="{!savePage}"/>
+  <apex:commandButton value="Buy / Save & New" Action="{!savenew}"/>
+  <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
 </apex:pageBlockbuttons>
 <apex:pageBlockSection title="New Ticket" columns="2" collapsible="false">
-<apex:inputField value="{!New_Ticket__c.from_City__c}"/>
-<apex:inputField value="{!New_Ticket__c.to_City__c}"/>
-<apex:inputField value="{!New_Ticket__c.Bus__c}"/>
-<apex:inputField value="{!New_Ticket__c.Seat_number__c}"/>
-<apex:inputField value="{!New_Ticket__c.Passanger__c}"/>
+  <apex:inputField value="{!New_Ticket__c.from_City__c}"/>
+  <apex:inputField value="{!New_Ticket__c.Seat_number__c}"/>
+  <apex:inputField value="{!New_Ticket__c.to_City__c}"/>
+  <apex:inputField value="{!New_Ticket__c.Bus__c}"/>
 </apex:pageBlockSection>
 </apex:pageBlock>
 </apex:form>
@@ -53,10 +54,5 @@
          </apex:pageBlock>
   </apex:form>
 <!-- Button "Return to Home Page" -->
-  
-
-<apex:panelGroup>
-          <apex:outputLink value="{!$Page.HomePageUser}">Return to Home Page</apex:outputLink>
-</apex:panelGroup>
 
 </apex:page>

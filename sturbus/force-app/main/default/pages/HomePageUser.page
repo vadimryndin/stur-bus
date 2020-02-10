@@ -1,13 +1,29 @@
-<apex:page id="HomePageUser" showHeader="false" title="Welcom to Star Bus Company Bus Station!" standardController="Bus__c" tabStyle="Bus__c" recordSetVar="Buses">
+<apex:page id="HomePageUser" showHeader="false" title="Welcom to Star Bus Company Bus Station!" standardController="Bus__c" tabStyle="Bus__c" recordSetVar="Buses" extensions="TheController">
 <!-- Begin Default Content REMOVE THIS -->
 
-<!--<apex:form >
-    <apex:pageBlock title="Star Bus Company Bus Station"></apex:pageBlock>
-    <apex:image url="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
-   <h1>Dear {!$User.FirstName} {!$User.LastName}!</h1> 
-<p>WELCOM to Star Bus Company Bus Station!</p> 
-</apex:form> !-->
-
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!$User.FirstName} {!$User.Last_Name__c} welcom to Star Bus Company Bus Station!</div>
+                 </div>
+                <div class="demo-only"  style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-body_small slds-border_top slds-border_bottom"> {!$User.FirstName} You are viewing available buses.</div>
+                 </div>
+            </body>
+      </span>
+    </div>
+  </div>
+<!-- Head -->
+<!--
 <apex:panelGrid columns="2" id="theGrid">
     <apex:image url="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
      <p><b>WELCOM to Star Bus Company Bus Station!</b>  </p>
@@ -15,7 +31,7 @@
 
 <apex:pageBlock title="Hello {!$User.FirstName} {!$User.LastName}!">
                     You are viewing available buses.
-           </apex:pageBlock>
+           </apex:pageBlock>  -->
     
 <apex:pageBlock>
             <apex:pageBlockTable value="{!Buses}" var="bus">
@@ -28,15 +44,16 @@
             </apex:pageBlockTable>
 </apex:pageBlock>
 
-<apex:panelGroup id="theLinks">
-          <apex:outputLink value="{!$Page.BuyTicket}">To buy a ticket</apex:outputLink>
-</apex:panelGroup>
-
-
+<!-- Button "BuyTicket" -->
 <apex:form>
-       
-       <apex:commandButton value="Go" action="{!list}"/>
-   </apex:form>
-    
-<!-- End Default Content REMOVE THIS -->
+    <apex:pageBlock >
+      <center>
+      <apex:commandButton value="Buy a ticket" action="{!buyticket}"/>
+      <apex:commandButton value="My Profile" action="{!goProfile}"/>
+      <!--apex:commandButton value="View my Tickets" action="{!myTickets}"/!-->
+    </center>
+    </apex:pageBlock>
+    </apex:form>
+<!-- Button "BuyTicket" -->
+
 </apex:page>
