@@ -1,0 +1,91 @@
+<apex:page id="Companies" showHeader="false" title="Transport companies" standardController="Transport_company__c" tabStyle="Transport_company__c" recordSetVar="Transport_companies" extensions="AdminExtention">
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!$User.FirstName} {!$User.Last_Name__c} welcom to Star Bus Company Bus Station!</div>
+                 </div>
+                <div class="demo-only"  style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-body_small slds-border_top slds-border_bottom"> {!$User.FirstName} You are viewing available companies.</div>
+                 </div>
+            </body>
+      </span>
+    </div>
+  </div>
+
+  <apex:form>
+    <apex:pageBlock >
+            <center>
+                <apex:commandButton value="Add a new transport company" action="{!addCompany}"/>
+              </center>
+    </apex:pageBlock>
+    </apex:form>
+
+<apex:form>
+    <apex:pageBlock title="Transport companies">
+        <apex:pageBlockTable value="{!CompaniesList}" var="comps">
+            <apex:column headerValue="Name">
+                <apex:outputLink value="/CompanyInfo?id={!comps.id}"> {!comps.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column value="{!comps.Office_adress__c}"/>
+            <apex:column value="{!comps.Phone__c}"/>
+            <apex:column value="{!comps.Email__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:form>
+
+<!--
+<apex:pageBlock>
+    <apex:repeat var="comp" value="{!Transport_companies}">
+        <apex:pageBlockSection title="{!comp.name}">
+            <apex:pageBlockSectionItem> 
+                <apex:outputLabel value="Adress" for="Adress"/>
+                <apex:outputField id="Adress" value="{!comp.Office_adress__c}"/>
+            </apex:pageBlockSectionItem>  
+            <apex:pageBlockSectionItem> 
+                <apex:outputLabel value="Phone" for="Phone"/>
+                <apex:outputField id="Phone" value="{!comp.Phone__c}"/>
+            </apex:pageBlockSectionItem> 
+            <apex:pageBlockSectionItem> 
+                <apex:outputLabel value="Email" for="Email"/>
+                <apex:outputField id="Email" value="{!comp.Email__c}"/>
+            </apex:pageBlockSectionItem>  
+            <apex:pageBlockSectionItem> 
+                
+            </apex:pageBlockSectionItem>  
+                <apex:relatedList list="Buses__r" subject="{!comp.Id}"/>
+                <apex:relatedList list="Bus_drivers__r" subject="{!comp.Id}" />
+        </apex:pageBlockSection>
+    </apex:repeat>  
+</apex:pageBlock>   
+!-->
+<!-- Buttons -->
+<apex:form>
+    <apex:pageBlock >
+        <center>
+        <apex:commandButton value="Return to Home Page" action="{!returnPage}"/>
+        <apex:commandButton value="View Bus Drivers" action="{!Drivers}"/>
+        <apex:commandButton value="View Passengers" action="{!Passengers}"/>
+        </center>
+    </apex:pageBlock>
+</apex:form>
+
+    <apex:form>
+        <apex:pageBlock >
+            <center>
+                <apex:commandButton value="Add a new transport company" action="{!addCompany}"/>
+            </center>
+        </apex:pageBlock>
+    </apex:form>
+<!-- Buttons -->
+
+</apex:page>

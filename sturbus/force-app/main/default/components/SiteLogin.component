@@ -7,14 +7,15 @@
         <apex:inputText id="username" value="{!username}"/>
         <apex:outputLabel value="{!$Label.site.password}" for="password"/>
         <apex:inputSecret id="password" value="{!password}"/>
-        <apex:outputText value=""/>
         <apex:commandButton action="{!login}" value="{!$Label.site.login_button}" id="loginButton"/>
+        <apex:commandButton action="{!loginAdmin}" value="Log In as Admin" id="loginAdminButton"/>
         <apex:outputText value=""/>
         <apex:outputText value=""/>
-        <apex:outputText value=""/>
-        <apex:panelGroup id="theLinks">
+        <apex:panelGroup id="theLinks1">
           <apex:outputLink value="{!$Page.ForgotPassword}"> {!$Label.site.forgot_your_password_q}</apex:outputLink>
           <apex:outputText value="   |   "  />
+        </apex:panelGroup>
+        <apex:panelGroup id="theLinks2">
           <apex:outputLink value="{!$Page.SignUp}" >{!$Label.site.new_user_q}</apex:outputLink> 
         </apex:panelGroup>
       </apex:panelGrid> 

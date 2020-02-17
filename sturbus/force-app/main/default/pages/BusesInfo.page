@@ -1,0 +1,59 @@
+<apex:page id="busInfo" showHeader="false" title="Bus Info" standardController="Bus__c" extensions="busesInfoController"  >
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">" {!BusList.Name} " Bus Info</div>
+              </div>
+          </body>
+      </span>
+    </div>
+  </div>
+<!-- Head -->
+<apex:form>
+    <apex:pageBlock >
+        <center>
+            <apex:commandButton value="Buy a ticket" action="{!buyticket}"/>
+        </center>
+    </apex:pageBlock>
+  </apex:form>
+
+<apex:form >
+      <apex:pageBlock title="{!BusList.Name} Bus info" mode="maindetail">
+        <apex:pageBlockSection title="{!BusList.Name}" columns="2" collapsible="false">
+          <apex:outputField value="{!BusList.Name}"/> 
+          <apex:outputField value="{!BusList.from__c}"/>
+          <apex:outputField value="{!BusList.to__c}"/>
+          <apex:outputField value="{!BusList.Year__c}"/>
+          <apex:outputField value="{!BusList.Seats__c}"/> 
+          <apex:outputField value="{!BusList.quality__c}"/>
+          <apex:outputText value="{!BusList.Transport_company__r.Name}"/>
+          <apex:outputField value="{!BusList.Bus_drivers__c}"/>
+          <apex:outputText value=""/>
+          <apex:outputField value="{!BusList.in_Voyage__c}"/>
+        </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+
+<!-- Button "Return to Home Page" -->
+  <apex:form>
+    <apex:pageBlock >
+        <center>
+            <apex:commandButton value="Buy a ticket" action="{!buyticket}"/>
+            <apex:commandButton value="My Profile" action="{!goProfile}"/>
+            <apex:commandButton value="Return to Home Page" action="{!returnPageUser}"/>
+        </center>
+    </apex:pageBlock>
+  </apex:form>
+  <!-- Button "Return to Home Page" -->
+  
+</apex:page>

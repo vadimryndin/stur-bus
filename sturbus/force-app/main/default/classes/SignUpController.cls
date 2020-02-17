@@ -17,7 +17,7 @@ global with sharing class SignUpController {
 
 //Add a correct page
 global PageReference loginAdmin() {
-PageReference pr = new PageReference('/apex/SignUp');
+PageReference pr = Page.HomePageAdmin;
   pr.setRedirect(true);
   return pr;
     }

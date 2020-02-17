@@ -29,7 +29,7 @@
 <!-- New Ticket -->
 
 <apex:form >
-<apex:pageBlock title="Ticket Detail">
+<apex:pageBlock title="Ticket Details">
 <apex:pageBlockbuttons >
   <apex:commandButton value="Buy a new ticket" action="{!buyticket}"/>
   <apex:commandButton value="{!$User.FirstName} {!$User.Last_Name__c} profile" Action="{!goProfile}"/>

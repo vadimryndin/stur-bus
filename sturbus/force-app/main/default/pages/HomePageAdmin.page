@@ -1,4 +1,4 @@
-<apex:page id="HomePageUser" showHeader="false" title="Welcom to Star Bus Company Bus Station!" standardController="Bus__c" tabStyle="Bus__c" recordSetVar="Buses" extensions="TheController">
+<apex:page id="HomePageAdmin" showHeader="false" title="Admin Bus Station!" standardController="Bus__c" tabStyle="Bus__c" recordSetVar="Buses" extensions="AdminExtention">
 <!-- Begin Default Content REMOVE THIS -->
 
 <apex:slds />
@@ -22,32 +22,48 @@
       </span>
     </div>
   </div>
-<!-- Head -->
+
+  <apex:form>
+    <apex:pageBlock >
+        <center>
+                <apex:outputLabel value="You can add new Buses or new " />
+                <apex:outputLink value="{!$Page.Drivers}"> Drivers</apex:outputLink>
+                <apex:outputLabel value="from a specific " />
+                <apex:outputLink value="{!$Page.Companies}"> page of Transport company</apex:outputLink>
+                <br/><p>¯\_(ツ)_/¯</p><br/>
+                <p><b>If You want to EDIT any Bus click on its Brand </b></p><br/>
+            <apex:commandButton value="View Transport Companies" action="{!Companies}"/>
+        </center>
+    </apex:pageBlock>
+</apex:form>
     
 <apex:pageBlock>
             <apex:pageBlockTable value="{!Buses}" var="bus">
              <!--apex:column headerValue="Buses" value="{!bus.Name}"/-->
              <apex:column headerValue="Bus brand">
-                <apex:outputLink value="/BusesInfo?busid={!bus.id}"> {!bus.Name}</apex:outputLink>
+                <apex:outputLink value="/BusInfo?id={!bus.id}"> {!bus.Name}</apex:outputLink>
             </apex:column>
              <apex:column headerValue="Departure" value="{!bus.from__c}"/>
              <apex:column headerValue="Arrival" value="{!bus.to__c}"/>
              <apex:column headerValue="Number of seats" value="{!bus.seats__c}"/>
              <apex:column headerValue="Quality of seats" value="{!bus.quality__c}"/>
              <apex:column headerValue="In voyage now" value="{!bus.in_Voyage__c}"/>
+             <apex:column headerValue="Transport company">
+              <apex:outputLink value="/CompanyInfo?id={!bus.Transport_company__r.id}"> {!bus.Transport_company__r.Name}</apex:outputLink>
+            </apex:column>
             </apex:pageBlockTable>
 </apex:pageBlock>
 
-<!-- Button "BuyTicket" -->
+<!-- Buttons -->
 <apex:form>
     <apex:pageBlock >
-      <center>
-      <apex:commandButton value="Buy a ticket" action="{!buyticket}"/>
-      <apex:commandButton value="My Profile" action="{!goProfile}"/>
-      <!--apex:commandButton value="View my Tickets" action="{!myTickets}"/!-->
-    </center>
+        <center>
+        <apex:commandButton value="View Transport Companies" action="{!Companies}"/>
+        <apex:commandButton value="View Bus Drivers" action="{!Drivers}"/>
+        <apex:commandButton value="View Passengers" action="{!Passengers}"/>
+        </center>
     </apex:pageBlock>
-    </apex:form>
-<!-- Button "BuyTicket" -->
+</apex:form>
+<!-- Buttons -->
 
 </apex:page>

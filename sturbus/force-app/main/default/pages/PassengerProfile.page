@@ -1,4 +1,4 @@
-<apex:page id="psgProfile" showHeader="false" title="Select your ticket!" standardController="Passenger__c" extensions="TheController"  >
+<apex:page id="psgProfile" showHeader="false" title="Passenger profile!" standardController="Passenger__c" extensions="TheController"  >
 
 <apex:slds />
 <!-- Head -->
@@ -24,6 +24,7 @@
 <apex:form>
 <apex:pageBlock >
   <apex:commandButton value="Buy a new ticket" action="{!buyticket}"/>
+  <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return" />
 </apex:pageBlock>
 </apex:form>
 <!-- New Ticket -->
@@ -39,8 +40,15 @@
     </apex:pageBlock>
 </apex:form>
 
+<apex:form>
+        <apex:pageBlock >
+            <center>
+                <apex:commandButton value="EDIT Profile" action="{!editProfile}"/>
+            </center>
+        </apex:pageBlock>
+    </apex:form>
 
-  <apex:relatedList list="New_Tickets__r" pageSize="20">
+  <apex:relatedList list="New_Tickets__r" pageSize="30">
     <apex:facet name="header">My Tickets List</apex:facet>
   </apex:relatedList>
 
@@ -57,7 +65,9 @@
 <!-- Button "Return to Home Page" -->
   <apex:form>
     <apex:pageBlock >
-      <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return"  immediate="true"/>
+      <center>
+        <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return" />
+      </center>
     </apex:pageBlock>
   </apex:form>
   <!-- Button "Return to Home Page" -->

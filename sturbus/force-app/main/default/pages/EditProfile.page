@@ -1,0 +1,58 @@
+<apex:page id="PassengerInfo" showHeader="false" title="Passenger profile edit" standardController="Passenger__c" tabStyle="Passenger__c" extensions="TheController">
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!$User.FirstName} {!$User.Last_Name__c} Profile Info</div>
+                 </div>
+            </body>
+      </span>
+    </div>
+  </div>
+
+  <apex:form >
+    <apex:pageBlock title="Passenger info">
+      <apex:pageBlockSection title="{!Passenger__c.Name}" columns="2" collapsible="false">
+        <apex:outputField value="{!Passenger__c.Name}"/> 
+        <apex:outputField value="{!Passenger__c.Email__c}"/>
+        <apex:outputField value="{!Passenger__c.First_Name__c}"/>
+        <apex:outputField value="{!Passenger__c.Passanger_phone__c}"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+
+  <apex:form>
+    <apex:pageBlock title="Edit Form Profile Info">
+              <apex:pageBlockSection title="Edit Form Profile Info" columns="2">
+                  <apex:inputField value="{!Passenger__c.Name}"/>
+                  <apex:inputField value="{!Passenger__c.Email__c}"/>
+                  <apex:inputField value="{!Passenger__c.First_Name__c}"/>
+                  <apex:inputField value="{!Passenger__c.Passanger_phone__c}"/>
+              </apex:pageBlockSection>
+              <apex:pageBlockButtons >
+                  <apex:commandButton action="{!savEdit}" value="Save"/>
+                  <apex:commandButton value="Cancel" action="{!goProfile}" immediate="true"/>
+              </apex:pageBlockButtons>
+      </apex:pageBlock>
+  </apex:form>
+
+<!-- Buttons -->
+<apex:form>
+  <apex:pageBlock >
+    <center>
+        <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return" />
+    </center>
+  </apex:pageBlock>
+</apex:form>
+<!-- Buttons -->
+
+</apex:page>

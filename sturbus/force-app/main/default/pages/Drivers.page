@@ -1,0 +1,64 @@
+<apex:page id="Drivers" showHeader="false" title="Drivers" standardController="Bus_driver__c" tabStyle="Bus_driver__c" recordSetVar="Bus_drivers" extensions="AdminExtention">
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">Drivers Info</div>
+                 </div>
+                <div class="demo-only"  style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-body_small slds-border_top slds-border_bottom"> {!$User.FirstName} You are viewing available bus drivers.</div>
+                 </div>
+            </body>
+      </span>
+    </div>
+  </div>
+<!-- Buttons -->
+  <apex:form>
+    <apex:pageBlock >
+            <center>
+                <apex:outputLabel value="You can add new Drivers from a specific " />
+                <apex:outputLink value="{!$Page.Companies}"> page of Transport company</apex:outputLink>
+                <br/><p>¯\_(ツ)_/¯</p><br/>
+                <p><b>If You want to EDIT any Driver click on his First Name </b></p>
+              </center>
+    </apex:pageBlock>
+    </apex:form>
+<!-- Buttons -->    
+<apex:pageBlock title="Drivers">
+            <apex:pageBlockTable value="{!Bus_drivers}" var="driver">
+             <!--apex:column headerValue="First name" value="{!driver.First_Name__c}"/-->
+             <apex:column headerValue="First name">
+              <apex:outputLink value="/DriverInfo?id={!driver.id}"> {!driver.First_Name__c}</apex:outputLink>
+          </apex:column>
+             <apex:column headerValue="Last Name" value="{!driver.Name}"/>
+             <apex:column headerValue="Date of Birth" value="{!driver.Date_of_Birth__c}"/>
+             <apex:column headerValue="Driver experience" value="{!driver.Driver_experience__c}"/>
+             <apex:column headerValue="Passed medical examination" value="{!driver.Passed_medical_examination__c}"/>
+             <!--apex:column headerValue="Transport company" value="{!driver.Transport_company__c}"/-->
+             <apex:column headerValue="Transport company">
+              <apex:outputLink value="/CompanyInfo?id={!driver.Transport_company__r.id}"> {!driver.Transport_company__r.Name}</apex:outputLink>
+          </apex:column>
+            </apex:pageBlockTable>
+</apex:pageBlock>
+
+<!-- Buttons -->
+<apex:form>
+    <apex:pageBlock >
+      <center>
+      <apex:commandButton value="Return to Home Page" action="{!returnPage}"/>
+      <apex:commandButton value="View Transport companies" action="{!Companies}"/>
+    </center>
+    </apex:pageBlock>
+    </apex:form>
+<!-- Buttons -->
+
+</apex:page>

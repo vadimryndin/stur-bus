@@ -11,6 +11,11 @@ global with sharing class SiteLoginController {
         String startUrl = '/HomePageUser';
         return Site.login(username, password, startUrl);
     }
+    global PageReference loginAdmin() {
+      //  String startUrl = System.currentPageReference().getParameters().get('startUrl');
+        String startUrl = '/HomePageAdmin';
+        return Site.login(username, password, startUrl);
+    }
     
     global SiteLoginController () {}
 }

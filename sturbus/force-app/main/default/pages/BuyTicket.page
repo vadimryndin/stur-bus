@@ -1,4 +1,4 @@
-<apex:page id="BuyTicket" showHeader="false" title="Select your ticket!" standardController="New_Ticket__c" extensions="buttonController"  >
+<apex:page id="BuyTicket" showHeader="false" docType="html-5.0" title="Select your ticket!" standardController="New_Ticket__c" extensions="buttonController"  >
 
 <apex:slds />
 <!-- Head -->
@@ -24,6 +24,7 @@
 <apex:form>
   <apex:pageBlock>
     <apex:commandButton value="{!$User.FirstName} {!$User.Last_Name__c} profile" action="{!goProfile}"/>
+    <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return"/>
   </apex:pageBlock>
 </apex:form>
 <!-- New Ticket -->
@@ -35,23 +36,36 @@
   <apex:commandButton value="Buy / Save & New" Action="{!savenew}"/>
   <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
 </apex:pageBlockbuttons>
-<apex:pageBlockSection title="New Ticket" columns="2" collapsible="false">
+<apex:pageBlockSection title="New Ticket" columns="1" collapsible="false">
   <apex:inputField value="{!New_Ticket__c.from_City__c}"/>
-  <apex:inputField value="{!New_Ticket__c.Seat_number__c}"/>
   <apex:inputField value="{!New_Ticket__c.to_City__c}"/>
-  <apex:inputField value="{!New_Ticket__c.Bus__c}"/>
+  <apex:inputField value="{!New_Ticket__c.Seat_number__c}"/>
+
 </apex:pageBlockSection>
+
+<apex:pageBlockSection>
+    <apex:commandButton value="SELECT" action="{!selectBus}"/>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection columns="1" showHeader="false">
+ 
+    <apex:outputLabel value="Please click on the 'SELECT' button  and choose a Bus" for="busesPickList"></apex:outputLabel>
+      <apex:selectList id="busesPickList" value="{!selectedBus}" size="1" title="Bus" multiselect="false">
+      <apex:selectOptions value="{!buses}"></apex:selectOptions>
+      </apex:selectList>
+</apex:pageBlockSection>
+
 </apex:pageBlock>
 </apex:form>
+
 <!-- Button "Return to Home Page" -->
   <apex:form>
     <apex:pageBlock >
-            <center>
-                <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return"  immediate="true"/>
-                        <br/>
-                        <br/>
-           </center>
-         </apex:pageBlock>
+      <center>
+        <apex:commandButton value="{!$User.FirstName} {!$User.Last_Name__c} profile" action="{!goProfile}"/>
+        <apex:commandButton value="Return to Home Page" action="{!returnPage}" id="return"/>
+      </center>
+    </apex:pageBlock>
   </apex:form>
 <!-- Button "Return to Home Page" -->
 

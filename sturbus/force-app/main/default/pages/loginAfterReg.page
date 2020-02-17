@@ -55,26 +55,10 @@
                 </apex:panelGroup>
               </apex:panelGrid> 
              </apex:outputPanel>
-       
           </apex:panelGrid> 
        </apex:panelGrid>
       </center>
       <br/>
-    
     </apex:define >
-  <apex:form >
  
-   <apex:pageBlock >
-          
-   <center>
- 
-                   <br/>
-    <apex:commandButton action="{!loginAdmin}" value="Log In as Admin" id="loginAdmin"/>
-  
-   </center>
-
-   </apex:pageBlock>
-  
-    </apex:form>
-     
 </apex:page>

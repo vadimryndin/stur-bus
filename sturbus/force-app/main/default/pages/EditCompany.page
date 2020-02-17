@@ -1,0 +1,58 @@
+<apex:page id="CompanyInfo" showHeader="false" title="Transport company" standardController="Transport_company__c" tabStyle="Transport_company__c" extensions="AdminExtention">
+
+<apex:slds />
+<!-- Head -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-12 slds-m-left_large slds-m-top_x-small slds-m-bottom_x-small">
+      <span>
+           <img src="https://upload.wikimedia.org/wikipedia/en/a/af/Adelaide_bus_logo.png" width="110" height="110" alt="Bus logo"/>
+      </span>
+    </div>
+    <div class="slds-col slds-size_11-of-6">
+      <span>
+        <body class="slds-scope">
+            <div class="demo-only slds-m-top_large" style="padding:0.5rem;background:#53b15f">
+                <div class="slds-text-color_inverse slds-text-heading_large slds-border_top slds-border_bottom slds-box">{!Comp.Name} Transport Company Info</div>
+                 </div>
+            </body>
+      </span>
+    </div>
+  </div>
+
+  <apex:form >
+      <apex:pageBlock title="{!Comp.Name} company info">
+        <apex:pageBlockSection title="{!Comp.Name}" columns="2" collapsible="false">
+          <apex:outputField value="{!Comp.Name}"/> 
+          <apex:outputField value="{!Comp.Office_adress__c}"/>
+          <apex:outputField value="{!Comp.Phone__c}"/>
+          <apex:outputField value="{!Comp.Email__c}"/>
+        </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+
+  <apex:form>
+    <apex:pageBlock title="Edit Form Company Info">
+              <apex:pageBlockSection title="Edit Form Company Info" columns="1">
+                  <apex:inputField value="{!Transport_company__c.Name}"/>
+                  <apex:inputField value="{!Transport_company__c.Office_adress__c}"/>
+                  <apex:inputField value="{!Transport_company__c.Phone__c}"/>
+                  <apex:inputField value="{!Transport_company__c.Email__c}"/>
+              </apex:pageBlockSection>
+              <apex:pageBlockButtons >
+                  <apex:commandButton action="{!savEdit}" value="Save"/>
+              </apex:pageBlockButtons>
+      </apex:pageBlock>
+  </apex:form>
+
+<!-- Buttons -->
+<apex:form>
+  <apex:pageBlock >
+    <center>
+      <apex:commandButton value="Return to Home Page" action="{!returnPage}"/>
+      <apex:commandButton value="Return to List of companies" action="{!Companies}"/>
+    </center>
+  </apex:pageBlock>
+</apex:form>
+<!-- Buttons -->
+
+</apex:page>

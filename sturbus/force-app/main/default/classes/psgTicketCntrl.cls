@@ -9,10 +9,10 @@ public with sharing class psgTicketCntrl {
          String CurrentPsgURL = '/PassengerProfile' + addUrl;
            
          return CurrentPsgURL;
-           }
-        else{
+      }
+      else{
            return '/PassengerProfile';
-        }           
+      }           
    }      
 
    public static String psgHomePage() {
@@ -24,10 +24,10 @@ public with sharing class psgTicketCntrl {
          String CurrentPsgURL = '/HomePageUser' + addUrl;
            
          return CurrentPsgURL;
-           }
-        else{
+      }
+      else{
            return '/HomePageUser';
-        }           
+      }           
    }      
 
    public static String psgBuyTicket() {
@@ -39,10 +39,10 @@ public with sharing class psgTicketCntrl {
          String CurrentPsgURL = '/BuyTicket' ; //+ addUrl;
            
          return CurrentPsgURL;
-           }
-        else{
+      }
+      else{
            return '/BuyTicket';
-        }           
+      }           
    }   
 
    public static String psgTicketInfo() {
@@ -54,10 +54,10 @@ public with sharing class psgTicketCntrl {
          String CurrentPsgURL = '/MyTicketInfo' + addUrl;
            
          return CurrentPsgURL;
-           }
-        else{
+      }
+      else{
            return '/MyTicketInfo';
-        }           
+      }           
    }
    
    public static String psgTicketCompl() {
@@ -70,10 +70,10 @@ public with sharing class psgTicketCntrl {
          String CurrentPsgURL = '/TicketCompleted' + addUrl;
            
          return CurrentPsgURL;
-           }
-        else{
+      }
+      else{
            return '/TicketCompleted';
-        }           
+      }           
    }
    
    public static String psgId() {
@@ -84,9 +84,9 @@ public with sharing class psgTicketCntrl {
          String CurrentPsgID = (String)CurrentPsgs[0].Id;
                     
          return CurrentPsgID;
-           }
-        else{
+      }
+      else{
            return '';
-        }           
+      }           
    }
 }
