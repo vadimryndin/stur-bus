@@ -29,33 +29,71 @@
 </apex:form>
 <!-- New Ticket -->
 
-<apex:form >
-<apex:pageBlock title="Ticket Details">
-<apex:pageBlockbuttons >
-  <apex:commandButton value="Buy / Save" action="{!savePage}"/>
-  <apex:commandButton value="Buy / Save & New" Action="{!savenew}"/>
-  <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
-</apex:pageBlockbuttons>
-<apex:pageBlockSection title="New Ticket" columns="1" collapsible="false">
-  <apex:inputField value="{!New_Ticket__c.from_City__c}"/>
-  <apex:inputField value="{!New_Ticket__c.to_City__c}"/>
-  <apex:inputField value="{!New_Ticket__c.Seat_number__c}"/>
+<apex:form id="buttonBlock1">
+  <apex:pageBlock  rendered="{!buttons}" >
+      <center>
+        <apex:commandButton value="Buy / Save" action="{!savePage}"/>
+        <apex:commandButton value="Buy / Save & New" Action="{!savenew}"/>
+        <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+      </center>
+  </apex:pageBlock>  
+</apex:form>
 
-</apex:pageBlockSection>
+<apex:form>
+  <apex:pageBlock title="Ticket Info">
+    <apex:pageBlockSection title="New Ticket" columns="1" collapsible="false">
+      <apex:inputField value="{!New_Ticket__c.from_City__c}"/>
+      <apex:inputField value="{!New_Ticket__c.to_City__c}"/>
+      <!--apex:inputField value="{!New_Ticket__c.Seat_number__c}"/-->
+    </apex:pageBlockSection>
 
-<apex:pageBlockSection>
-    <apex:commandButton value="SELECT" action="{!selectBus}"/>
-</apex:pageBlockSection>
+    <apex:pageBlockSection columns="1">
+      <br/><p><b>Please click on the 'SELECT a BUS' button  and choose a Bus</b></p>
+        <apex:commandButton value="SELECT BUS" action="{!selectBus}" reRender="showBuses, showButton"/>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
 
-<apex:pageBlockSection columns="1" showHeader="false">
- 
-    <apex:outputLabel value="Please click on the 'SELECT' button  and choose a Bus" for="busesPickList"></apex:outputLabel>
-      <apex:selectList id="busesPickList" value="{!selectedBus}" size="1" title="Bus" multiselect="false">
-      <apex:selectOptions value="{!buses}"></apex:selectOptions>
-      </apex:selectList>
-</apex:pageBlockSection>
+  <apex:pageBlock id="showBuses">
+    <apex:pageBlockSection columns="1" showHeader="false" id="busSelect" rendered="{!busList}">
+        <apex:outputLabel value="Available Buses" for="selectedBus"></apex:outputLabel>
+          <apex:selectList id="busesPickList" value="{!selectedBus}" size="1" title="Bus" multiselect="false">
+          <apex:selectOptions value="{!buses}"></apex:selectOptions>
+          </apex:selectList>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
 
-</apex:pageBlock>
+  <apex:pageBlock id="showButton">
+  <apex:pageBlockSection columns="1" rendered="{!buttonSelect}">
+      <br/><p><b>After You`ve chosen the bus, Please click on the 'SELECT a SEAT' button  and choose a Seat</b></p>
+        <apex:commandButton value="SELECT SEAT" action="{!selectSeat}" reRender="showSeats, showСonfirm"/>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+
+  <apex:pageBlock id="showSeats">
+    <apex:pageBlockSection columns="1" showHeader="false" id="seatSelect" rendered="{!seatsList}">
+        <apex:outputLabel value="Available Seats" for="selectedSeat"></apex:outputLabel>
+          <apex:selectList id="seatsPickList" value="{!selectedSeat}" size="1" title="Seats" multiselect="false">
+          <apex:selectOptions value="{!seats}"></apex:selectOptions>
+          </apex:selectList>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+
+  <apex:pageBlock id="showСonfirm">
+  <apex:pageBlockSection columns="1" rendered="{!btnAppr}">
+      <br/><p><b>Сonfirm information</b></p>
+        <apex:commandButton value="Сonfirm" action="{!confirmTicket}" reRender="buttonBlock1, buttonBlock2"/>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form>
+
+<apex:form id="buttonBlock2">
+  <apex:pageBlock  rendered="{!buttons}" >
+      <center>
+        <apex:commandButton value="Buy / Save" action="{!savePage}"/>
+        <apex:commandButton value="Buy / Save & New" Action="{!savenew}"/>
+        <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+      </center>
+  </apex:pageBlock>  
 </apex:form>
 
 <!-- Button "Return to Home Page" -->

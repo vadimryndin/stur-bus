@@ -4,7 +4,7 @@ public with sharing class deleteTempItems {
     private static List <Bus__c> busesToDelete  = new List <Bus__c>();
 
     public static void deleteTempTickets() {
-        ticketsToDelete = [SELECT ID FROM New_Ticket__c WHERE Bus__r.Name = 'Temp'];
+        ticketsToDelete = [SELECT ID FROM New_Ticket__c WHERE Bus__r.Name = 'Temp' OR Bus__r.Name = null];
         Database.DeleteResult[] drList1 = Database.delete(ticketsToDelete, false);
         // Iterate through each returned result
         for(Database.DeleteResult dr : drList1) {
