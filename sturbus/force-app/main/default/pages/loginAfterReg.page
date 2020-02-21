@@ -1,6 +1,5 @@
-<apex:page id="loginAfter" showHeader="false" title="WELCOM to Star Bus Company Bus Station" controller="SignUpController" >
-
-    
+<apex:page id="loginAfter" showHeader="false" title="WELCOM to Star Bus Company Bus Station" >
+  
     <!-- Head -->
    <!-- <apex:slds />
       <div class="slds-grid slds-gutters">
@@ -25,16 +24,15 @@
     <!-- Head -->
 
     <apex:form >
-        <apex:pageBlock>
-            <center>
+      <apex:pageBlock>
+        <center>
          <p><b> Thank You for registration!</b></p>
-                <br/>
-                <p> Please Log In and Have a nice day!.</p>
-                <br/>
-            </center>
-      
-         </apex:pageBlock>
-         </apex:form>
+            <br/>
+              <p> Please Log In and Have a nice day!.</p>
+            <br/>
+        </center>
+      </apex:pageBlock>
+    </apex:form>
 
     <apex:define name="body">
         <center>

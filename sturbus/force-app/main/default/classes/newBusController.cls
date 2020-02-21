@@ -1,5 +1,7 @@
 public with sharing class newBusController {
     public Bus__c bus {get; set;}
+    public Boolean driverList {get;set;}
+    public String selectedDriver {get;set;}
     public List <Bus__c> busesToSave  = new List <Bus__c>();
     
     String busId = ApexPages.currentPage().getParameters().get('busid');
@@ -20,7 +22,7 @@ public with sharing class newBusController {
             newBus.Name = bus.Name;
             newBus.Transport_company__c = ApexPages.currentPage().getParameters().get('compid');
             newBus.from__c = bus.from__c;
-            newBus.Bus_drivers__c = bus.Bus_drivers__c;
+            newBus.Bus_drivers__c = selectedDriver;
             newBus.to__c = bus.to__c;
             newBus.Year__c = bus.Year__c;
             newBus.Seats__c = bus.Seats__c;
@@ -42,7 +44,7 @@ public with sharing class newBusController {
     
             savePage();
             
-            PageReference pr = Page.NewBus;
+            PageReference pr = new PageReference('/NewBus?compid='+ ApexPages.currentPage().getParameters().get('compid'));
             pr.setRedirect(true);
             return pr;
         }
@@ -53,7 +55,7 @@ public with sharing class newBusController {
             newBus.Name = bus.Name;
             newBus.Transport_company__c = bus.Transport_company__c;
             newBus.from__c = bus.from__c;
-            newBus.Bus_drivers__c = bus.Bus_drivers__c;
+            newBus.Bus_drivers__c = selectedDriver;
             newBus.to__c = bus.to__c;
             newBus.Year__c = bus.Year__c;
             newBus.Seats__c = bus.Seats__c;
@@ -83,5 +85,35 @@ public with sharing class newBusController {
             PageReference pr = Page.HomePageAdmin;
             pr.setRedirect(true);
             return pr;
+        }
+
+        public PageReference selectDriver(){
+            driverList = true;
+            return null;
+        }
+
+        public List<selectOption> getDrivers() {
+            List<selectOption> options = new List<selectOption>(); 
+             //new list for holding all of the picklist options
+            options.add(new selectOption('', '- None -')); 
+            List<Bus_driver__c> driverList= new List<Bus_driver__c>();
+            driverList = [SELECT Name FROM Bus_driver__c WHERE Transport_company__c = : bus.Transport_company__c];
+            
+            for (Bus_driver__c driverVar : driverList) { 
+                options.add(new selectOption(driverVar.id, driverVar.Name)); 
+            }
+            return options;
+        }
+        public List<selectOption> getDriversList() {
+            List<selectOption> options = new List<selectOption>(); 
+             //new list for holding all of the picklist options
+            options.add(new selectOption('', '- None -')); 
+            List<Bus_driver__c> driverList= new List<Bus_driver__c>();
+            driverList = [SELECT Name FROM Bus_driver__c WHERE Transport_company__c = : ApexPages.currentPage().getParameters().get('compid')];
+            
+            for (Bus_driver__c driverVar : driverList) { 
+                options.add(new selectOption(driverVar.id, driverVar.Name)); 
+            }
+            return options;
         }
 }

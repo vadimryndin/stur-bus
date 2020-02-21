@@ -32,8 +32,7 @@ public with sharing class SiteRegisterController {
         u.Email = email;
         u.CommunityNickname = communityNickname;
         u.FirstName = FirstName;
-       u.Last_Name__c = communityNickname;
-
+        u.Last_Name__c = communityNickname;
                
         String accountId = PORTAL_ACCOUNT_ID;
         
@@ -53,7 +52,7 @@ public with sharing class SiteRegisterController {
                 PageReference page = System.Page.loginAfterReg;
                 page.setRedirect(true);
                 return page;
-                }
+            }
             else {
                 PageReference page = System.Page.SiteRegisterConfirm;
                 page.setRedirect(true);
@@ -62,7 +61,7 @@ public with sharing class SiteRegisterController {
         }
         return null;
         
-        }
+    }
 
   /*  public SiteRegisterController () {
         Passenger__c psg = new Passenger__c();

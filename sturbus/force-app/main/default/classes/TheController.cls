@@ -1,58 +1,58 @@
-public class TheController{
-    public ApexPages.StandardSetController stdCntrlr {get; set;}
-    public TheController(ApexPages.StandardSetController controller) {
+global with sharing class TheController{
+    global ApexPages.StandardSetController stdCntrlr {get; set;}
+    global TheController(ApexPages.StandardSetController controller) {
         stdCntrlr = controller;
     }
 
-    public List<Passenger__c> psgToUpdate{get;set;}
-    public String contactID {get; set;}
-    public Passenger__c psg {get; set;}
+    global List<Passenger__c> psgToUpdate{get;set;}
+    global String contactID {get; set;}
+    global Passenger__c psg {get; set;}
     
     private ApexPages.StandardController sctrl;
-    public TheController(ApexPages.StandardController controller){
+    global TheController(ApexPages.StandardController controller){
         this.sctrl = controller;
         this.psg = (Passenger__c)sctrl.getRecord();
     }
       
-    public PageReference returnPage(){
+    global PageReference returnPage(){
      
         PageReference pr = new PageReference(psgTicketCntrl.psgHomePage());
         pr.setRedirect(true);
         return pr;
     }
 
-    public PageReference buyticket(){
+    global PageReference buyticket(){
         PageReference pr = new PageReference(psgTicketCntrl.psgBuyTicket());
       //  PageReference pr = Page.BuyTicket;
         pr.setRedirect(true);
         return pr;
     }
 
-    public PageReference goProfile(){
+    global PageReference goProfile(){
         PageReference pr = new PageReference(psgTicketCntrl.psgTicketCntrl());
         pr.setRedirect(true);
         return pr;
     }
 
-    public PageReference myTickets(){
+    global PageReference myTickets(){
         PageReference pr = new PageReference(psgTicketCntrl.psgTicketInfo());
        // PageReference pr = Page.MyTicketInfo;
         pr.setRedirect(true);
         return pr;
     } 
             
-    public static String PassangerId(){
+    global static String PassangerId(){
         String psgID = psgTicketCntrl.psgId();
         return psgID;
     }
 
-    public PageReference editProfile(){
+    global PageReference editProfile(){
         PageReference pr = new PageReference('/EditProfile?id='+ ApexPages.currentPage().getParameters().get('id'));
         pr.setRedirect(true);
         return pr;
     }
 
-    public PageReference savEdit(){
+    global PageReference savEdit(){
 
         Passenger__c newPSG = new Passenger__c();
         newPSG.Name = psg.Name;

@@ -38,14 +38,27 @@
         <apex:pageBlockSection title="New Bus" columns="2" collapsible="false">
             <apex:inputField value="{!Bus__c.Name}"/>
             <!--apex:inputField value="{!Bus__c.Transport_company__c}"/-->
-            <apex:inputField value="{!Bus__c.Bus_drivers__c}"/>
-            <apex:inputField value="{!Bus__c.from__c}"/>
+            <!--apex:inputField value="{!Bus__c.Bus_drivers__c}"/-->
             <apex:inputField value="{!Bus__c.Year__c}"/>
-            <apex:inputField value="{!Bus__c.to__c}"/>
+            <apex:inputField value="{!Bus__c.from__c}"/>
             <apex:inputField value="{!Bus__c.Seats__c}"/>
-            <apex:outputText value=" "/>
+            <apex:inputField value="{!Bus__c.to__c}"/>
             <apex:inputField value="{!Bus__c.quality__c}"/>
         </apex:pageBlockSection>
+
+        <apex:pageBlockSection columns="1">
+      <br/><p><b>Please click on the 'SELECT DRIVER' button  and choose a Bus Driver</b></p>
+        <apex:commandButton value="SELECT DRIVER" action="{!selectDriver}" reRender="showDrivers"/>
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+
+    <apex:pageBlock id="showDrivers">
+      <apex:pageBlockSection columns="1" showHeader="false" id="driverSelect" rendered="{!driverList}">
+          <apex:outputLabel value="Available Drivers" for="selectedDriver"></apex:outputLabel>
+            <apex:selectList id="driversPickList" value="{!selectedDriver}" size="1" title="Driver" multiselect="false">
+            <apex:selectOptions value="{!driversList}"></apex:selectOptions>
+            </apex:selectList>
+      </apex:pageBlockSection>
     </apex:pageBlock>
 </apex:form>
 <!-- Button "Return to Home Page" -->

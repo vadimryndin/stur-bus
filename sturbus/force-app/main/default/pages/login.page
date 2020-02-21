@@ -1,17 +1,13 @@
-<apex:page id="login" showHeader="false" title="Star Bus Company Bus Station" controller="SignUpController" >
+<apex:page id="login" showHeader="false" title="Star Bus Company Bus Station" >
 <apex:form >
-  <apex:pageBlock title="WELCOM to Star Bus Company Bus Station">
-          
-   <center>
-   <p><b>Have a nice day!</b></p>
-                 
-                   <br/>
-                   <br/>
-      </center>
+  <apex:pageBlock title="WELCOM to Star Bus Company Bus Station">        
+    <center>
+    <p><b>Have a nice day!</b></p>
+        <br/><br/>
+    </center>
+  </apex:pageBlock>
+</apex:form>
 
-   </apex:pageBlock>
-   </apex:form>
- <!--<apex:composition template="{!$Site.Template}"> !-->
     <apex:define name="body">  
       <center>
         <apex:panelGrid bgcolor="white" columns="1"> 

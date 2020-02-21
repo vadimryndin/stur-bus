@@ -53,7 +53,6 @@ public class buttonController {
             } else {
                 return null;                
             }
-
         }
         
         public PageReference savenew(){
@@ -120,7 +119,6 @@ public class buttonController {
             List<selectOption> options = new List<selectOption>(); 
              //new list for holding all of the picklist options
             options.add(new selectOption('', '- None -')); 
-            //error
             Bus__c seatsQuantity = [SELECT Seats__c FROM Bus__c WHERE Id = : selectedBus][0];
             Integer seatQuantity = (Integer)seatsQuantity.Seats__c;
             for(Integer i=1; i < seatQuantity; i++){
@@ -141,7 +139,7 @@ public class buttonController {
             System.debug('====================seatList: ' + seatsInTickets );
 
             Set<Integer> availableSeats = new Set<Integer>(seatsQ);
-            if(seatsInTickets.size() > 0){
+            if(seatsInTickets.size() > 0) {
                 availableSeats.removeAll(seatsInTickets);
             }
             
@@ -151,7 +149,7 @@ public class buttonController {
             return options;
         }
 
-        public PageReference selectSeat(){
+        public PageReference selectSeat() {
             
             System.debug('====================Bus: ' + selectedBus );
 
