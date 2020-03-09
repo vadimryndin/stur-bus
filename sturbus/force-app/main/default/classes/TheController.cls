@@ -40,12 +40,12 @@ global with sharing class TheController{
         pr.setRedirect(true);
         return pr;
     } 
-            
+/*        
     global static String PassangerId(){
         String psgID = psgTicketCntrl.psgId();
         return psgID;
     }
-
+*/
     global PageReference editProfile(){
         PageReference pr = new PageReference('/EditProfile?id='+ ApexPages.currentPage().getParameters().get('id'));
         pr.setRedirect(true);
