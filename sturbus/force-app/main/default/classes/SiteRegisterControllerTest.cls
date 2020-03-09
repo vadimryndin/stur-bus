@@ -14,4 +14,17 @@
         controller.confirmPassword = 'abcd123';
         System.assert(controller.registerUser() == null);  
     }
+
+    @IsTest static void testAddPsg() {
+        Passenger__c psg = new Passenger__c();
+        psg.First_Name__c = 'FirstName';
+        psg.Name = 'communityNickname';
+        psg.Email__c = 'email@mail.com';
+        insert psg;
+
+        System.assert ('FirstName', [SELECT First_Name__c FROM Passenger__c LIMIT 1]);
+        List<Passenger__c> testList =  [SELECT First_Name__c FROM Passenger__c];
+        System.assertEquals (1, testList.size());
+
+    }
 }
