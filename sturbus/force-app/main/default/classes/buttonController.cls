@@ -1,4 +1,4 @@
-public class buttonController {
+public without sharing class buttonController {
     
     public New_Ticket__c ticket {get; set;}
     public List <New_Ticket__c> tickets {get; set;}
